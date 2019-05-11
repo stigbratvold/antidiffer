@@ -1,25 +1,23 @@
 @import "reset";
 @import "bootstrap-grid";
 @import "mediaqueries";
+@import "spacing";
 @import "color";
 @import "typography";
 @import "shapes";
 
-// Spacing
-$spacer-base: 8px;
-$spacer-sm: $spacer-base*2; // 16px
-$spacer-md: $spacer-base*4; // 32px
-$spacer-lg: $spacer-base*6; // 48px
-$spacer-xl: $spacer-base*12; // 96px
-$spacer-xxl: $spacer-base*15; // 120px
 
 
 a {
   color: $text-color;
   text-decoration: none;
+  border-bottom: 1px solid black;
 
   &:hover {
-    border-bottom: 1px solid black;
+    border-color: $color2;
+  }
+  &.logo {
+    border-bottom: none;
   }
 }
 
@@ -35,28 +33,52 @@ header {
 
   padding: 48px 48px 0 48px;
 }
+section {
+  padding-top: 120px;
+  padding-bottom: 120px;
 
-.container {
-	width: 1256px; // 1200px + 48px padding
-	padding: 0 48px;
+  &.divider {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+}
+
+.wrapper {
+	width: 1400px;
+  max-width: 100%;
+	padding-left: 48px;
+  padding-right: 48px;
 	margin-left: auto;
 	margin-right: auto;
+  @include mq($widescreen) {
+		width: 100%; // 1200px + 48px padding
+	}
+
+  .container:not(:first-child) {
+    margin-top: $spacer-xl;
+  }
 }
+
+.sidebar {
+  h3 { margin: 0; }
+  h3 + ul { margin-top: $spacer-sm; }
+  li {
+      font-size: $small-size;
+  }
+  li:not(:first-child) {
+      margin-top: $spacer-base/2;
+  }
+}
+
 .hero {
   padding-top: 80px;
   padding-bottom: 80px;
 
   .intro {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
 
     h1 {
       margin-bottom: 40px;
     }
   }
-}
-
-.data {
-	width: 100%;
-	padding-left: 24px;
-	padding-right: 24px;
 }

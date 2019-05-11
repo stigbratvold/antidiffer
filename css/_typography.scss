@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans:400,400i');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500|IBM+Plex+Sans:400,400i');
 
 // Sizes desktop
 $body-size: 24px;
+$small-size: 16px;
 $h1-size: 80px;
 $h2-size: 48px;
-$h3-size: 25px;
+$h3-size: 24px;
 
 // Sizes mobile
 $body-mobile-size: 16px;
 $h1-mobile-size: 40px;
-$h2-mobile-size: 24px;
+$h2-mobile-size: 28px;
 $h3-mobile-size: 20px;
 
 
@@ -21,31 +22,46 @@ $title-font: "IBM Plex Mono", sans-serif;
 body {
 	font-size: $body-size;
 	font-family: $body-font;
-  line-height: 1.25;
+  line-height: 1.4;
+	font-weight: 400;
 	@include mq($mobile) {
 		font-size: $body-mobile-size;
 	}
 }
+p:not(:first-child) {
+	margin-top: $spacer-md;
+	@include mq($mobile) {
+		margin-top: $spacer-sm;
+	}
+}
+
+// Titles
+h1, h2, h3 {
+	font-family: $title-font;
+  line-height: 1;
+	font-weight: 400;
+}
 h1 {
 	font-size: $h1-size;
+	@include mq($tablet) {
+		font-size: 64px;
+	}
 	@include mq($mobile) {
 		font-size: $h1-mobile-size;
 	}
 }
 h2 {
 	font-size: $h2-size;
+	margin-bottom: $spacer-md;
 	@include mq($mobile) {
 		font-size: $h2-mobile-size;
 	}
 }
 h3 {
 	font-size: $h3-size;
+	margin-bottom: $spacer-sm;
+	font-weight: 500;
 	@include mq($mobile) {
 		font-size: $h3-mobile-size;
 	}
-}
-h1, h2, h3 {
-	font-family: $title-font;
-  line-height: 1;
-	font-weight: 400;
 }
