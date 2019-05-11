@@ -1836,10 +1836,11 @@ h3 {
 a {
   color: #1a1a1a;
   text-decoration: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #1a1a1a;
+  transition: all 0.2s ease;
 }
 a:hover {
-  border-color: #DC5E41;
+  border-color: transparent;
 }
 a.logo {
   border-bottom: none;

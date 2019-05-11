@@ -11,10 +11,11 @@
 a {
   color: $text-color;
   text-decoration: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $text-color;
+  transition: all .2s ease;
 
   &:hover {
-    border-color: $color2;
+    border-color: transparent;
   }
   &.logo {
     border-bottom: none;
