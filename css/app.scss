@@ -1,0 +1,62 @@
+@import "reset";
+@import "bootstrap-grid";
+@import "mediaqueries";
+@import "color";
+@import "typography";
+@import "shapes";
+
+// Spacing
+$spacer-base: 8px;
+$spacer-sm: $spacer-base*2; // 16px
+$spacer-md: $spacer-base*4; // 32px
+$spacer-lg: $spacer-base*6; // 48px
+$spacer-xl: $spacer-base*12; // 96px
+$spacer-xxl: $spacer-base*15; // 120px
+
+
+a {
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover {
+    border-bottom: 1px solid black;
+  }
+}
+
+header {
+  height: 140px;
+  width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+	align-items: start;
+
+  padding: 48px 48px 0 48px;
+}
+
+.container {
+	width: 1256px; // 1200px + 48px padding
+	padding: 0 48px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.hero {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  .intro {
+    margin-bottom: 80px;
+
+    h1 {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.data {
+	width: 100%;
+	padding-left: 24px;
+	padding-right: 24px;
+}

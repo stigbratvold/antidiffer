@@ -1,0 +1,55 @@
+.shapes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 24px;
+  grid-gap: 24px;
+
+  margin-bottom: 220px;
+}
+.shapes div {
+  position:  relative;
+  padding-top: 100%;
+}
+.shapes div > span {
+  background-color: #1F1E21;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 100%;
+
+  transition: background-color 2s;
+}
+.shapes div:nth-child(2n+1) > span,
+.shapes div:nth-child(3n+2) > span,
+.shapes div:nth-child(5n+3) > span,
+.shapes div:nth-child(7n+5) > span,
+.shapes div:nth-child(11n+7) {
+ 	border-radius: 50%;
+  width: 100%;
+  left: 0;
+}
+
+.shapes div:hover > span {
+  background-color: $color1;
+  transition: background-color 0s;
+}
+
+.shapes div:nth-child(2n+2):hover > span {
+  background-color: $color2;
+}
+.shapes div:nth-child(3n+4):hover > span {
+  background-color: $color3;
+}
+.shapes div:nth-child(5n+1):hover > span {
+  background-color: $color4;
+}
+.shapes div:nth-child(7n+2):hover > span {
+  background-color: $color5;
+}
+.shapes div:nth-child(11n+1):hover > span {
+	background-color: $color6;
+}
+.shapes div:nth-child(11n+5):hover > span {
+	background-color: $color7;
+}
