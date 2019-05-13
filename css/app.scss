@@ -1,5 +1,5 @@
 @import "reset";
-@import "bootstrap-grid";
+@import "grid";
 @import "mediaqueries";
 @import "spacing";
 @import "color";
@@ -12,7 +12,7 @@ a {
   color: $text-color;
   text-decoration: none;
   border-bottom: 1px solid $text-color;
-  transition: all .2s ease;
+  transition: border .2s ease;
 
   &:hover {
     border-color: transparent;
@@ -35,24 +35,46 @@ header {
   padding: 48px 48px 0 48px;
 }
 section {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: $spacer-xxl;
+  padding-bottom: $spacer-xxl;
 
   &.divider {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
+}
+footer {
+  background-color: $bg-color-dark;
+  padding-top: $spacer-xl;
+  padding-bottom: $spacer-lg;
+  color: #fff;
+  font-size: 18px;
 
+  .row + .row {
+    margin-top: $spacer-xxl;
+  }
+
+  a {
+    color: #fff;
+    border-color: #fff;
+  }
+  h3 {
+    font-size: 32px;
+  }
 }
 
 .wrapper {
 	width: 1400px;
   max-width: 100%;
-	padding-left: 48px;
-  padding-right: 48px;
+	padding-left: $spacer-lg;
+  padding-right: $spacer-lg;
 	margin-left: auto;
 	margin-right: auto;
   @include mq($widescreen) {
 		width: 100%; // 1200px + 48px padding
+	}
+  @include mq($tablet) {
+    padding-left: $spacer-md;
+    padding-right: $spacer-md;
 	}
 
   .container:not(:first-child) {
