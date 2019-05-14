@@ -1,3 +1,4 @@
+// Hero pattern grid
 .shapes {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -14,9 +15,8 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
   @include mq($mobile) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
-
 }
 .shapes div {
   position:  relative;
@@ -63,12 +63,17 @@
 .shapes div:nth-child(11n+5):hover > span { background-color: $color7; }
 
 
+
+
+
+// What we do icons
 .icon {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 24px;
 
   width: 140px;
+  margin-bottom: $spacer-lg;
 }
 .icon div {
   position:  relative;
@@ -87,37 +92,90 @@
   }
 }
 .zero .icon {
-  div:nth-child(2) {
-    display: none;
-  }
-  div > span {
-    background-color: $color5;
+  div:nth-child(1) span,
+  div:nth-child(4) span,
+  div:nth-child(7) span,
+  div:nth-child(9) span {
     left: 0;
     width: 100%;
     border-radius: 50%;
   }
+  div:nth-child(1) span { background-color: #E1D082; }
+  div:nth-child(2) span,
+  div:nth-child(3) span,
+  div:nth-child(4) span {
+    background-color: #DF9D59;
+  }
+  div:nth-child(5) span,
+  div:nth-child(6) span,
+  div:nth-child(7) span {
+    background-color: #E36835;
+  }
+  div:nth-child(8) span,
+  div:nth-child(9) span {
+    background-color: #C73327;
+  }
+  div:nth-child(2) span { transform:rotate(135deg) !important; }
+  div:nth-child(3) span { transform:rotate(75deg) !important; }
+  div:nth-child(5) span { transform:rotate(330deg) !important; }
+  div:nth-child(6) span { transform:rotate(90deg) !important; }
+  div:nth-child(6) span { transform:rotate(30deg) !important; }
 }
 
 .zeroone .icon {
-  div:first-child > span {
+  div > span {
     background-color: $color5;
+  }
+  div:nth-child(7) span,
+  div:nth-child(8) span,
+  div:nth-child(9) span {
     left: 0;
     width: 100%;
     border-radius: 50%;
   }
-  div:nth-child(2) > span {
-    background-color: $color1;
+  div:nth-child(1) span,
+  div:nth-child(2) span {
+    background-color: #A5AEAE;
+  }
+  div:nth-child(3) span,
+  div:nth-child(4) span,
+  div:nth-child(5) span {
+    background-color: #55B4D7;
+  }
+  div:nth-child(6) span,
+  div:nth-child(7) span {
+    background-color: #18797A;
+  }
+  div:nth-child(8) span,
+  div:nth-child(9) span {
+    background-color: #2B347A ;
   }
 }
 
 .onezero .icon {
-  div:first-child > span {
-    background-color: $color1;
+  div > span {
+    background-color: $color5;
   }
-  div:nth-child(2) > span {
-    background-color: $color2;
+  div:nth-child(1) span,
+  div:nth-child(2) span,
+  div:nth-child(3) span {
     left: 0;
     width: 100%;
     border-radius: 50%;
+  }
+  div:nth-child(1) span,
+  div:nth-child(2) span,
+  div:nth-child(4) span {
+    background-color: #E7AE68;
+  }
+  div:nth-child(3) span,
+  div:nth-child(5) span,
+  div:nth-child(7) span,
+  div:nth-child(8) span {
+    background-color: #F58C77;
+  }
+  div:nth-child(6) span,
+  div:nth-child(9) span {
+    background-color: #FF7D19;
   }
 }

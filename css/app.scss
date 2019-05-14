@@ -32,7 +32,11 @@ header {
   justify-content: space-between;
 	align-items: start;
 
-  padding: 48px 48px 0 48px;
+  padding: $spacer-lg $spacer-lg 0 $spacer-lg;
+  @include mq($tablet) {
+    padding-left: $spacer-md;
+    padding-right: $spacer-md;
+	}
 }
 section {
   padding-top: $spacer-xxl;
@@ -48,9 +52,15 @@ footer {
   padding-bottom: $spacer-lg;
   color: #fff;
   font-size: 18px;
+  margin-top: $spacer-xxl;
 
-  .row + .row {
-    margin-top: $spacer-xxl;
+  .row {
+    margin-bottom: $spacer-xxl;
+  }
+  .footer_bottom {
+    display: flex;
+    justify-content: space-between;
+  	align-items: flex-end;
   }
 
   a {
@@ -59,6 +69,10 @@ footer {
   }
   h3 {
     font-size: 32px;
+    margin-bottom: $spacer-lg;
+  }
+  .contact {
+    margin-bottom: $spacer-lg;
   }
 }
 
@@ -78,11 +92,12 @@ footer {
 	}
 
   .container:not(:first-child) {
-    margin-top: $spacer-xl;
+    margin-top: $spacer-xxl;
   }
 }
 
 .sidebar {
+  margin-top: $spacer-lg;
   h3 { margin: 0; }
   h3 + ul { margin-top: $spacer-sm; }
   li {
@@ -103,5 +118,38 @@ footer {
     h1 {
       margin-bottom: 40px;
     }
+  }
+}
+
+.person {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+  max-width: 440px;
+
+  &+.person {
+    margin-top: $spacer-lg;
+  }
+
+  .person_portrait {
+    background-size: cover;
+    background-position: center center;
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    width: 110px;
+    height: 110px;
+  }
+  &.iris .person_portrait {
+    background-image: url("img/Anti_Iris.jpg");
+  }
+  &.annkristin .person_portrait {
+    background-image: url("img/Anti_AnnKristin.jpg");
+  }
+}
+
+.whatwedo {
+  .row + .row {
+    margin-top: 220px;
   }
 }
