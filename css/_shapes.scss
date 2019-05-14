@@ -74,6 +74,9 @@
 
   width: 140px;
   margin-bottom: $spacer-lg;
+
+  position: sticky;
+  top: $spacer-lg;
 }
 .icon div {
   position:  relative;
@@ -178,4 +181,10 @@
   div:nth-child(9) span {
     background-color: #FF7D19;
   }
+
+  div:nth-child(4) span { transform:rotate(300deg) !important; }
+  div:nth-child(6) span { transform:rotate(60deg) !important; }
+  div:nth-child(7) span { transform:rotate(330deg) !important; }
+  div:nth-child(8) span { transform:rotate(345deg) !important; }
+  div:nth-child(9) span { transform:rotate(30deg) !important; }
 }

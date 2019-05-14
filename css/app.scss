@@ -21,6 +21,13 @@ a {
     border-bottom: none;
   }
 }
+.logo path,
+.logotype {
+  fill: $text-color;
+}
+footer .logotype {
+  fill: #fff;
+}
 
 header {
   height: 140px;
@@ -34,10 +41,25 @@ header {
 
   padding: $spacer-lg $spacer-lg 0 $spacer-lg;
   @include mq($tablet) {
-    padding-left: $spacer-md;
-    padding-right: $spacer-md;
+    padding-left: 24px;
+    padding-right: 24px;
 	}
 }
+
+
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.fade-in-element {
+  animation: fade-in 1.4s;
+}
+.hidden {
+  opacity: 0;
+}
+
+
+
 section {
   padding-top: $spacer-xxl;
   padding-bottom: $spacer-xxl;
@@ -54,13 +76,22 @@ footer {
   font-size: 18px;
   margin-top: $spacer-xxl;
 
-  .row {
-    margin-bottom: $spacer-xxl;
+  .footer_bottom {
+    margin-top: $spacer-xxl;
   }
   .footer_bottom {
     display: flex;
     justify-content: space-between;
   	align-items: flex-end;
+  }
+  .footer_head {
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   a {
@@ -72,7 +103,7 @@ footer {
     margin-bottom: $spacer-lg;
   }
   .contact {
-    margin-bottom: $spacer-lg;
+    margin-bottom: $spacer-xl;
   }
 }
 
@@ -87,8 +118,8 @@ footer {
 		width: 100%; // 1200px + 48px padding
 	}
   @include mq($tablet) {
-    padding-left: $spacer-md;
-    padding-right: $spacer-md;
+    padding-left: 24px;
+    padding-right: 24px;
 	}
 
   .container:not(:first-child) {
@@ -126,7 +157,11 @@ footer {
   justify-content: space-between;
   align-items: center;
   vertical-align: middle;
-  max-width: 440px;
+  max-width: 500px;
+
+  @include mq(722px) {
+    max-width: 100%;
+	}
 
   &+.person {
     margin-top: $spacer-lg;
@@ -139,6 +174,7 @@ footer {
     clip-path: circle(50% at 50% 50%);
     width: 110px;
     height: 110px;
+    margin-left: $spacer-md;
   }
   &.iris .person_portrait {
     background-image: url("img/Anti_Iris.jpg");
