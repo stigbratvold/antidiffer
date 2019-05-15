@@ -6,11 +6,11 @@
   grid-gap: 24px;
 
   @include mq($widescreen) {
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	}
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
   @include mq($desktop) {
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	}
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
   @include mq($tablet) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
@@ -43,24 +43,58 @@
   width: 100%;
   left: 0;
 }
-.shapes div:nth-child(2n+2) > span { transform: rotate(24deg); }
-.shapes div:nth-child(3n+4) > span { transform: rotate(60deg); }
-.shapes div:nth-child(5n+1) > span { transform: rotate(120deg); }
-.shapes div:nth-child(7n+2) > span { transform: rotate(180deg); }
-.shapes div:nth-child(11n+1) > span { transform: rotate(240deg); }
-.shapes div:nth-child(11n+5) > span { transform: rotate(48deg); }
+/// Handle the rotations in pure JS
+// .shapes div:nth-child(2n+2) > span { transform: rotate(24deg); }
+// .shapes div:nth-child(3n+4) > span { transform: rotate(60deg); }
+// .shapes div:nth-child(5n+1) > span { transform: rotate(120deg); }
+// .shapes div:nth-child(7n+2) > span { transform: rotate(180deg); }
+// .shapes div:nth-child(11n+1) > span { transform: rotate(240deg); }
+// .shapes div:nth-child(11n+5) > span { transform: rotate(48deg); }
+
+/// Handle the background classes using the style set classes
+$color-1-1: #c73327;
+$color-1-2: #e36835;
+$color-1-3: #df9d59;
+$color-2-1: #2b347a;
+$color-2-2: #55b4d7;
+$color-2-3: #a5aeae;
+
+/**
+ *
+ * The classes are named `style-a-b`, where `a` is the current
+ * style set (the style set changes every 5-10 seconds), and `b`
+ * is the current color index within the current style set.
+ */
+.style-1-1:hover > span {
+  background-color: $color-1-1;
+}
+.style-1-2:hover > span {
+  background-color: $color-1-2;
+}
+.style-1-3:hover > span {
+  background-color: $color-1-3;
+}
+.style-2-1:hover > span {
+  background-color: $color-2-1;
+}
+.style-2-2:hover > span {
+  background-color: $color-2-2;
+}
+.style-2-3:hover > span {
+  background-color: $color-2-3;
+}
 
 
 .shapes div:hover > span {
-  background-color: $color1;
+  // background-color: $color1;
   transition: background-color 0s;
 }
-.shapes div:nth-child(2n+2):hover > span { background-color: $color2; }
-.shapes div:nth-child(3n+4):hover > span { background-color: $color3; }
-.shapes div:nth-child(5n+1):hover > span { background-color: $color4; }
-.shapes div:nth-child(7n+2):hover > span { background-color: $color5; }
-.shapes div:nth-child(11n+1):hover > span { background-color: $color6; }
-.shapes div:nth-child(11n+5):hover > span { background-color: $color7; }
+// .shapes div:nth-child(2n+2):hover > span { background-color: $color2; }
+// .shapes div:nth-child(3n+4):hover > span { background-color: $color3; }
+// .shapes div:nth-child(5n+1):hover > span { background-color: $color4; }
+// .shapes div:nth-child(7n+2):hover > span { background-color: $color5; }
+// .shapes div:nth-child(11n+1):hover > span { background-color: $color6; }
+// .shapes div:nth-child(11n+5):hover > span { background-color: $color7; }
 
 
 
@@ -138,7 +172,7 @@
   }
   div:nth-child(1) span,
   div:nth-child(2) span {
-    background-color: #A5AEAE;
+   background-color: #A5AEAE;
   }
   div:nth-child(3) span,
   div:nth-child(4) span,
