@@ -75,7 +75,9 @@ footer {
   color: #fff;
   font-size: 18px;
   margin-top: $spacer-xxl;
-
+  @include mq($tablet) {
+    font-size: 14px;
+	}
   .footer_bottom {
     margin-top: $spacer-xxl;
   }
@@ -104,6 +106,9 @@ footer {
   }
   .contact {
     margin-bottom: $spacer-xl;
+  }
+  .footer_contact {
+    margin-right: $spacer-lg;
   }
 }
 
@@ -175,6 +180,10 @@ footer {
     width: 110px;
     height: 110px;
     margin-left: $spacer-md;
+    @include mq($tablet) {
+      width: 80px;
+      height: 80px;
+  	}
   }
   &.iris .person_portrait {
     background-image: url("img/Anti_Iris.jpg");
