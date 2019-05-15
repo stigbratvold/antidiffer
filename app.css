@@ -1557,16 +1557,21 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 80px;
+  font-size: 4.5vw;
 }
-@media (max-width: 769px) {
+@media (max-width: 1897px) {
   h1 {
-    font-size: 64px;
+    font-size: 5vw;
+  }
+}
+@media (max-width: 1582px) {
+  h1 {
+    font-size: 6vw;
   }
 }
 @media (max-width: 475px) {
   h1 {
-    font-size: 40px;
+    font-size: 8vw;
   }
 }
 

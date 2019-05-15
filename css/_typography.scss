@@ -42,12 +42,15 @@ h1, h2, h3 {
 	font-weight: 400;
 }
 h1 {
-	font-size: $h1-size;
-	@include mq($tablet) {
-		font-size: 64px;
+	font-size: 4.5vw;
+	@include mq(1897px) {
+		font-size: 5vw;
+	}
+	@include mq(1582px) {
+		font-size: 6vw;
 	}
 	@include mq($mobile) {
-		font-size: $h1-mobile-size;
+		font-size: 8vw;
 	}
 }
 h2 {
