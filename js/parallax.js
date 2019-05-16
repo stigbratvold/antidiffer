@@ -15,11 +15,10 @@ const addMovement = function () {
     const distanceToSection = midViewport - midSection
 
     // pick the tags to parallax
-    const image = section.querySelector("img")
     const contentTag = section.querySelector("div")
 
     // weight down this distance
-    let rotation = distanceToSection / 100
+    let rotation = distanceToSection / -100
     let contentDist = -1 * distanceToSection / 2
 
     // for all the even sections, rotate the other way
@@ -30,14 +29,12 @@ const addMovement = function () {
       rotation = rotation * -1
     }
 
-    // apply some parallax
-    image.style.transform = `rotate(${rotation}deg)`
+
 
     contentTag.style.top = `${contentDist}px`
-    contentTag.style.transform = `rotate(${-1 * rotation}deg)`
 
     // check the background
-    if (distanceToSection > -100) {
+    if (distanceToSection > -600) {
       const dataBackground = section.getAttribute("data-background")
       bodyTag.style.backgroundColor = dataBackground
     }
