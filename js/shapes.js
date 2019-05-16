@@ -26,6 +26,9 @@ const state = {
   mouseX: undefined,
   mouseY: undefined,
 
+  // Remember the previous scroll position to keep rotations fresh when scrolling
+  lastScrollY: 0,
+
   // What color set we are currently using
   styleSetIndex: 0,
 
@@ -78,9 +81,6 @@ function initializeShapes() {
   // Switch color set every 10 seconds
   setInterval(selectNextStyleSet, config.styleSetSwitchInterval * 1000);
 
-  // Add listener for mouse position
-  window.addEventListener("mousemove", throttle(updateMousePosition));
-
   // Add listener for device orientation
   if (state.isTouch) {
     window.addEventListener(
@@ -90,11 +90,10 @@ function initializeShapes() {
     );
   }
 
-  // Add listener for scrolling/resizing
-  const throttledUpdateWindowBounds = throttle(updateWindowBounds);
-  window.addEventListener("resize", throttledUpdateWindowBounds);
-  window.addEventListener("scroll", throttledUpdateWindowBounds);
-
+  // Add listener for mouse position
+  window.addEventListener("mousemove", throttle(updateMousePosition));
+  window.addEventListener("scroll", throttle(updateScroll));
+  window.addEventListener("resize", throttle(updateWindowBounds));
   // And run it once during startup:
   updateWindowBounds();
 }
@@ -125,12 +124,19 @@ function updateMousePosition(e) {
   if (state.isTouch) {
     return;
   }
-
   state.mouseX = e.clientX;
-  state.mouseY = e.clientY;
+  state.mouseY = e.clientY + window.scrollY;
+  updateRotations();
+}
 
-  // For every shape
+function updateScroll() {
+  state.mouseY += window.scrollY - state.lastScrollY;
+  state.lastScrollY = window.scrollY;
+  updateWindowBounds();
+  updateRotations();
+}
 
+function updateRotations() {
   if (!state.shapes) {
     return;
   }
