@@ -4,9 +4,6 @@
  * Configuration
  */
 const config = {
-  // Number of shapes to generate
-  shapes: 126,
-
   // The selector for the container in which to generate the shapes
   container: ".shapes",
 
@@ -118,19 +115,18 @@ function updateMousePosition(e) {
 }
 
 /**
- * Generate the shape elements
+ * Extract the shape elements from the DOM
  */
 function generateElements() {
   if (!state.container) {
     state.container = document.querySelector(config.container);
   }
   state.shapes = [];
-  for (var i = 0; i < config.shapes; i++) {
-    const elementContainer = document.createElement("div");
-    const element = document.createElement("span");
-    element.classList.add("element");
-    elementContainer.appendChild(element);
-    state.container.appendChild(elementContainer);
+  const elements = document.querySelectorAll(
+    config.container + " .shape > .element"
+  );
+  for (var i = 0; i < elements.length; i++) {
+    const element = elements[i];
     state.shapes.push({ element: element });
     element.addEventListener("mouseenter", function(e) {
       element.parentElement.className = getNextStyleClass();
@@ -142,7 +138,7 @@ function generateElements() {
  * Recalculate positions, offsets after scroll/resize
  */
 function updateWindowBounds() {
-  for (var i = 0; i < config.shapes; i++) {
+  for (var i = 0; i < state.shapes.length; i++) {
     var el = state.shapes[i].element;
     state.shapes[i].height = el.parentElement.offsetHeight;
     state.shapes[i].width = el.parentElement.offsetWidth;
