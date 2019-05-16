@@ -61,10 +61,14 @@
 // .shapes div:nth-child(11n+5) > span { transform: rotate(48deg); }
 
 /// Handle the background classes using the style set classes
-$red: #c73327; // Red
-$orange: #E36835; // Orange
-$yellow: #DF9D59; // Yellow
-$pink: #F58C77; // Pink
+$red: #c73327;
+$orange: #E36835;
+$yellow: #DF9D59;
+$pink: #F58C77;
+$blue: #2B347A;
+$cyan: #55B4D7;
+$green: #18797A;
+$gray: #A5AEAE;
 
 /**
  *
@@ -72,18 +76,14 @@ $pink: #F58C77; // Pink
  * style set (the style set changes every 5-10 seconds), and `b`
  * is the current color index within the current style set.
  */
-.style-1-1:hover > span {
-  background-color: $red;
-}
-.style-2-1:hover > span {
-  background-color: $orange;
-}
-.style-3-1:hover > span {
-  background-color: $yellow;
-}
-.style-4-1:hover > span {
-  background-color: $pink;
-}
+.style-1-1:hover > span { background-color: $red; }
+.style-2-1:hover > span { background-color: $orange; }
+.style-3-1:hover > span { background-color: $yellow; }
+.style-4-1:hover > span { background-color: $pink; }
+.style-5-1:hover > span { background-color: $blue; }
+.style-6-1:hover > span { background-color: $cyan; }
+.style-7-1:hover > span { background-color: $gray; }
+.style-8-1:hover > span { background-color: $green; }
 
 
 .shapes div:hover > span {

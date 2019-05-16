@@ -9,7 +9,7 @@ const config = {
 
   // An array of the length of each style set.
   // With styleSets: [3,3], the CSS classes used will be .style-1-1, .style-1-2, .style-1-3, .style-2-1, .style-2-2 and .style-2-3
-  styleSets: [1, 1, 1, 1],
+  styleSets: [1, 1, 1, 1, 1, 1, 1, 1],
 
   // Interval of color set switches
   styleSetSwitchInterval: 6

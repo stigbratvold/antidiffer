@@ -27,9 +27,7 @@ a {
 .logotype {
   fill: $text-color;
 }
-footer .logotype {
-  fill: #fff;
-}
+
 
 header {
   height: 140px;
@@ -87,7 +85,7 @@ section {
 
 footer {
   padding-top: $spacer-xl*2;
-  padding-bottom: $spacer-lg;
+  padding-bottom: $spacer-xl;
   color: #fff;
   font-size: 18px;
   margin-top: $spacer-xxl;
@@ -96,8 +94,6 @@ footer {
 	}
   .footer_bottom {
     margin-top: $spacer-xxl;
-  }
-  .footer_bottom {
     display: flex;
     justify-content: space-between;
   	align-items: flex-end;
@@ -125,6 +121,9 @@ footer {
   }
   .footer_contact {
     margin-right: $spacer-lg;
+  }
+  .logotype {
+    fill: #fff;
   }
 }
 
