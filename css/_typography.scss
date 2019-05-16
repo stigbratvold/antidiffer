@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500|IBM+Plex+Sans:400,400i');
 
-// Sizes desktop
+// Sizes
 $body-size: 22px;
 $small-size: 16px;
-$h1-size: 80px;
+$h1-size: 36px;
 $h2-size: 40px;
 $h3-size: 24px;
 
@@ -18,6 +18,18 @@ $h3-mobile-size: 20px;
 $body-font: "IBM Plex Sans", sans-serif;
 $title-font: "IBM Plex Mono", sans-serif;
 
+html {
+  font-size: 100%;
+  font-size: 1vw;
+  -webkit-text-size-adjust: 100%;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}
 
 body {
 	font-size: $body-size;
@@ -41,18 +53,16 @@ h1, h2, h3 {
   line-height: 1.15;
 	font-weight: 400;
 }
-h1 {
-	font-size: 4.5vw;
-	@include mq(1897px) {
-		font-size: 5vw;
+
+h1 { font-size: 36px;
+	@media screen and (min-width: 450px) {
+		font-size: calc(36px + 50 * ((100vw - 450px) / 1350));
 	}
-	@include mq(1582px) {
-		font-size: 6vw;
-	}
-	@include mq($mobile) {
-		font-size: 8vw;
+	@media screen and (min-width: 1800px) {
+		font-size: 80px;
 	}
 }
+
 h2 {
 	font-size: $h2-size;
 	margin-bottom: $spacer-md;
