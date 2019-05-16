@@ -81,6 +81,15 @@ function initializeShapes() {
   // Add listener for mouse position
   window.addEventListener("mousemove", throttle(updateMousePosition));
 
+  // Add listener for device orientation
+  if (state.isTouch) {
+    window.addEventListener(
+      "deviceorientation",
+      throttle(updateDeviceOrientation),
+      true
+    );
+  }
+
   // Add listener for scrolling/resizing
   const throttledUpdateWindowBounds = throttle(updateWindowBounds);
   window.addEventListener("resize", throttledUpdateWindowBounds);
@@ -91,9 +100,32 @@ function initializeShapes() {
 }
 
 /**
+ * Update device orientation
+ */
+function updateDeviceOrientation(e) {
+  const deg = e.webkitCompassHeading ? e.webkitCompassHeading : e.alpha;
+  // const t = Math.round(e.webkitCompassHeading);
+  state.deviceRotation = deg;
+
+  if (!state.shapes) {
+    return;
+  }
+
+  for (var i = 0; i < state.shapes.length; i++) {
+    const shape = state.shapes[i];
+    shape.element.style.transform = "rotate(" + deg + "deg)";
+  }
+}
+
+/**
  * Update the mouse position
  */
 function updateMousePosition(e) {
+  // Skip mouse position events on touch devices
+  if (state.isTouch) {
+    return;
+  }
+
   state.mouseX = e.clientX;
   state.mouseY = e.clientY;
 
@@ -114,6 +146,18 @@ function updateMousePosition(e) {
   }
 }
 
+function touchShape(e) {
+  const pe = e.currentTarget.parentElement;
+  const classes = pe.className.split(" ");
+  const newClasses = [];
+  for (var i = 0; i < classes.length; i++) {
+    if (classes[i].indexOf("style-") !== 0) {
+      newClasses.push(classes[i]);
+    }
+  }
+  pe.className = newClasses.join(" ") + " " + getNextStyleClass();
+}
+
 /**
  * Extract the shape elements from the DOM
  */
@@ -128,9 +172,8 @@ function generateElements() {
   for (var i = 0; i < elements.length; i++) {
     const element = elements[i];
     state.shapes.push({ element: element });
-    element.addEventListener("mouseenter", function(e) {
-      element.parentElement.className = getNextStyleClass();
-    });
+    element.addEventListener("mouseenter", touchShape);
+    element.addEventListener("touchstart", touchShape);
   }
 }
 
@@ -182,22 +225,5 @@ function getNextStyleClass() {
   // console.log('Retrieving the next color from the set', color);
   return className;
 }
-
-// if (this.state.isTouch) {
-//     window.addEventListener(
-//       'deviceorientation',
-//       this.updateOrientation,
-//       true
-//     );
-//   }
-
-//   updateOrientation = animationThrottle((e: DeviceOrientationEvent) => {
-//     const t = Math.round((e as any).webkitCompassHeading);
-//     this.setState({
-//       rotation: t,
-//       //   translateX: 0,
-//       //   translateY: 0,
-//     });
-//   });
 
 document.addEventListener("DOMContentLoaded", initializeShapes);
