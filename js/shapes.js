@@ -26,6 +26,9 @@ const state = {
   mouseX: undefined,
   mouseY: undefined,
 
+  // Remember the previous scroll position to keep rotations fresh when scrolling
+  lastScrollY: 0,
+
   // What color set we are currently using
   styleSetIndex: 0,
 
@@ -78,27 +81,62 @@ function initializeShapes() {
   // Switch color set every 10 seconds
   setInterval(selectNextStyleSet, config.styleSetSwitchInterval * 1000);
 
+  // Add listener for device orientation
+  if (state.isTouch) {
+    window.addEventListener(
+      "deviceorientation",
+      throttle(updateDeviceOrientation),
+      true
+    );
+  }
+
   // Add listener for mouse position
   window.addEventListener("mousemove", throttle(updateMousePosition));
-
-  // Add listener for scrolling/resizing
-  const throttledUpdateWindowBounds = throttle(updateWindowBounds);
-  window.addEventListener("resize", throttledUpdateWindowBounds);
-  window.addEventListener("scroll", throttledUpdateWindowBounds);
-
+  window.addEventListener("scroll", throttle(updateScroll));
+  window.addEventListener("resize", throttle(updateWindowBounds));
   // And run it once during startup:
   updateWindowBounds();
+}
+
+/**
+ * Update device orientation
+ */
+function updateDeviceOrientation(e) {
+  const deg = e.webkitCompassHeading ? e.webkitCompassHeading : e.alpha;
+  // const t = Math.round(e.webkitCompassHeading);
+  state.deviceRotation = deg;
+
+  if (!state.shapes) {
+    return;
+  }
+
+  for (var i = 0; i < state.shapes.length; i++) {
+    const shape = state.shapes[i];
+    shape.element.style.transform = "rotate(" + deg + "deg)";
+  }
 }
 
 /**
  * Update the mouse position
  */
 function updateMousePosition(e) {
+  // Skip mouse position events on touch devices
+  if (state.isTouch) {
+    return;
+  }
   state.mouseX = e.clientX;
-  state.mouseY = e.clientY;
+  state.mouseY = e.clientY + window.scrollY;
+  updateRotations();
+}
 
-  // For every shape
+function updateScroll() {
+  state.mouseY += window.scrollY - state.lastScrollY;
+  state.lastScrollY = window.scrollY;
+  updateWindowBounds();
+  updateRotations();
+}
 
+function updateRotations() {
   if (!state.shapes) {
     return;
   }
@@ -112,6 +150,18 @@ function updateMousePosition(e) {
     var l = Math.round(u * (180 / Math.PI) * -1);
     shape.element.style.transform = "rotate(" + l + "deg)";
   }
+}
+
+function touchShape(e) {
+  const pe = e.currentTarget.parentElement;
+  const classes = pe.className.split(" ");
+  const newClasses = [];
+  for (var i = 0; i < classes.length; i++) {
+    if (classes[i].indexOf("style-") !== 0) {
+      newClasses.push(classes[i]);
+    }
+  }
+  pe.className = newClasses.join(" ") + " " + getNextStyleClass();
 }
 
 /**
@@ -128,9 +178,8 @@ function generateElements() {
   for (var i = 0; i < elements.length; i++) {
     const element = elements[i];
     state.shapes.push({ element: element });
-    element.addEventListener("mouseenter", function(e) {
-      element.parentElement.className = getNextStyleClass();
-    });
+    element.addEventListener("mouseenter", touchShape);
+    element.addEventListener("touchstart", touchShape);
   }
 }
 
@@ -182,22 +231,5 @@ function getNextStyleClass() {
   // console.log('Retrieving the next color from the set', color);
   return className;
 }
-
-// if (this.state.isTouch) {
-//     window.addEventListener(
-//       'deviceorientation',
-//       this.updateOrientation,
-//       true
-//     );
-//   }
-
-//   updateOrientation = animationThrottle((e: DeviceOrientationEvent) => {
-//     const t = Math.round((e as any).webkitCompassHeading);
-//     this.setState({
-//       rotation: t,
-//       //   translateX: 0,
-//       //   translateY: 0,
-//     });
-//   });
 
 document.addEventListener("DOMContentLoaded", initializeShapes);
