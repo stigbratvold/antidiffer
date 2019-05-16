@@ -13,11 +13,20 @@
   }
   @include mq($tablet) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    .hide-tablet { display: none; }
   }
   @include mq($mobile) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    .hide-xs { display: none; }
   }
 }
+
+
+
+
+
 .shapes div {
   position:  relative;
   padding-top: 100%;

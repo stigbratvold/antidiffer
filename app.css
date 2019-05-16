@@ -1628,10 +1628,16 @@ footer {
   .shapes {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
+  .shapes .hide-tablet {
+    display: none;
+  }
 }
 @media (max-width: 475px) {
   .shapes {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  .shapes .hide-xs {
+    display: none;
   }
 }
 
