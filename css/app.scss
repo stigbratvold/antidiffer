@@ -67,8 +67,8 @@ section {
   padding-bottom: $spacer-xxl;
 
   &.large {
-    padding-top: $spacer-xl*2;
-    padding-bottom: $spacer-xl*2;    
+    padding-top: $spacer-xxl*2;
+    padding-bottom: $spacer-xxl*2;
   }
 
   &.divider {
@@ -77,18 +77,16 @@ section {
 }
 #section2 {
   h2 {
-    font-size: 32px;
-    margin-bottom: $spacer-sm;
-  }
-  p {
-    font-size: 20px;
-    margin-top: 0;
+    text-align: center;
+    margin-bottom: 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 footer {
-  background-color: $bg-color-dark;
-  padding-top: $spacer-xl;
+  padding-top: $spacer-xl*2;
   padding-bottom: $spacer-lg;
   color: #fff;
   font-size: 18px;
@@ -168,6 +166,7 @@ footer {
 
   .intro {
     margin-bottom: 120px;
+    text-align: center;
 
     h1 {
       margin-bottom: 40px;

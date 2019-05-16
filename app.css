@@ -1526,7 +1526,7 @@ html {
 
 body {
   background-color: #ffffff;
-  color: #1a1a1a;
+  color: #29272e;
 }
 
 html {
@@ -1691,7 +1691,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 24px;
-  width: 140px;
+  width: 164px;
   margin-bottom: 48px;
   position: sticky;
   top: 48px;
@@ -1827,9 +1827,9 @@ body {
 }
 
 a {
-  color: #1a1a1a;
+  color: #29272e;
   text-decoration: none;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid #29272e;
   transition: border 0.2s ease;
 }
 a:hover {
@@ -1841,7 +1841,7 @@ a.logo {
 
 .logo path,
 .logotype {
-  fill: #1a1a1a;
+  fill: #29272e;
 }
 
 footer .logotype {
@@ -1889,25 +1889,23 @@ section {
   padding-bottom: 120px;
 }
 section.large {
-  padding-top: 192px;
-  padding-bottom: 192px;
+  padding-top: 240px;
+  padding-bottom: 240px;
 }
 section.divider {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 #section2 h2 {
-  font-size: 32px;
-  margin-bottom: 16px;
-}
-#section2 p {
-  font-size: 20px;
-  margin-top: 0;
+  text-align: center;
+  margin-bottom: 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer {
-  background-color: #2B2930;
-  padding-top: 96px;
+  padding-top: 192px;
   padding-bottom: 48px;
   color: #fff;
   font-size: 18px;
@@ -1994,6 +1992,7 @@ footer .footer_contact {
 }
 .hero .intro {
   margin-bottom: 120px;
+  text-align: center;
 }
 .hero .intro h1 {
   margin-bottom: 40px;

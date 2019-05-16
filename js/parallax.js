@@ -1,4 +1,4 @@
-const sections = document.querySelectorAll("section")
+const sections = document.querySelectorAll("section, footer")
 const bodyTag = document.querySelector("body")
 
 const addMovement = function () {
