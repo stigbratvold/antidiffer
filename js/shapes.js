@@ -12,7 +12,12 @@ const config = {
   styleSets: [1, 1, 1, 1, 1, 1, 1, 1],
 
   // Interval of color set switches
-  styleSetSwitchInterval: 6
+  styleSetSwitchInterval: 6,
+
+  // The stages for animating the icons
+  stage1: ".zero",
+  stage2: ".zeroone",
+  stage3: ".onezero"
 };
 
 /**
@@ -39,7 +44,18 @@ const state = {
   container: undefined,
 
   // An array of the actual particles elements and some metadata (positioning)
-  shapes: []
+  shapes: [],
+
+  // The positions of the stage nodes
+  stage1: undefined, // The node itself
+  stage1top: undefined,
+  stage1bottom: undefined,
+  stage2: undefined, // The node itself
+  stage2top: undefined,
+  stage2bottom: undefined,
+  stage3: undefined, // The node itself
+  stage3top: undefined,
+  stage3bottom: undefined
 };
 
 /**
@@ -132,8 +148,24 @@ function updateMousePosition(e) {
 function updateScroll() {
   state.mouseY += window.scrollY - state.lastScrollY;
   state.lastScrollY = window.scrollY;
-  updateWindowBounds();
+  // updateWindowBounds();
   updateRotations();
+  updateStage();
+}
+
+function updateStage() {
+  var midpoint = state.lastScrollY + window.innerHeight / 2;
+  let stage = 0;
+  if (midpoint > state.stage1top) {
+    stage = 1;
+  }
+  if (midpoint > state.stage2top) {
+    stage = 2;
+  }
+  if (midpoint > state.stage3top) {
+    stage = 3;
+  }
+  document.body.className = "stage" + stage.toString();
 }
 
 function updateRotations() {
@@ -168,6 +200,15 @@ function touchShape(e) {
  * Extract the shape elements from the DOM
  */
 function generateElements() {
+  if (!state.stage1) {
+    state.stage1 = document.querySelector(config.stage1);
+  }
+  if (!state.stage2) {
+    state.stage2 = document.querySelector(config.stage2);
+  }
+  if (!state.stage3) {
+    state.stage3 = document.querySelector(config.stage3);
+  }
   if (!state.container) {
     state.container = document.querySelector(config.container);
   }
@@ -183,10 +224,39 @@ function generateElements() {
   }
 }
 
+function getAbsoluteOffsets(el) {
+  const res = {
+    left: el.offsetLeft,
+    top: el.offsetTop
+  };
+  var parent = el.offsetParent;
+  while (parent) {
+    res.left += parent.offsetLeft;
+    res.top += parent.offsetTop;
+    parent = parent.offsetParent;
+  }
+  return res;
+}
+
 /**
  * Recalculate positions, offsets after scroll/resize
  */
 function updateWindowBounds() {
+  const s1 = state.stage1.getBoundingClientRect();
+  const ao1 = getAbsoluteOffsets(state.stage1);
+  state.stage1top = ao1.top;
+  state.stage1bottom = ao1.top + s1.height;
+
+  const s2 = state.stage2.getBoundingClientRect();
+  const ao2 = getAbsoluteOffsets(state.stage2);
+  state.stage2top = ao2.top;
+  state.stage2bottom = ao2.top + s2.height;
+
+  const s3 = state.stage3.getBoundingClientRect();
+  const ao3 = getAbsoluteOffsets(state.stage3);
+  state.stage3top = ao3.top;
+  state.stage3bottom = ao3.top + s3.height;
+
   for (var i = 0; i < state.shapes.length; i++) {
     var el = state.shapes[i].element;
     state.shapes[i].height = el.parentElement.offsetHeight;

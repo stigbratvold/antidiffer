@@ -126,7 +126,7 @@ $gray: #A5AEAE;
     height: 100%;
     transform: rotate(0deg);
 
-    transition: background-color 2s;
+    transition: background-color 2s, border-radius 2s, width 2s;
   }
 }
 
@@ -234,5 +234,13 @@ $gray: #A5AEAE;
 }
 
 .onezero .icon {
+  @include iconOneZero;
+}
+
+.stage2 .zero .icon {
+  @include iconZeroOne;
+}
+
+.stage3 .zero .icon {
   @include iconOneZero;
 }
