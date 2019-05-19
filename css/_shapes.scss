@@ -2,7 +2,6 @@
 .shapes {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-column-gap: 24px;
   grid-gap: 24px;
 
   @include mq($widescreen) {
@@ -40,14 +39,76 @@
   height: 100%;
   transform: rotate(0deg);
 
-  transition: background-color 10s;
+  transition: background-color 8s;
 }
 
-.shapes div:nth-child(2n+1) > span,
-.shapes div:nth-child(3n+2) > span,
-.shapes div:nth-child(5n+3) > span,
-.shapes div:nth-child(7n+5) > span,
-.shapes div:nth-child(11n+7) {
+.shapes div:nth-child(1) > span,
+.shapes div:nth-child(4) > span,
+.shapes div:nth-child(6) > span,
+.shapes div:nth-child(9) > span,
+.shapes div:nth-child(12) > span,
+.shapes div:nth-child(13) > span,
+.shapes div:nth-child(15) > span,
+.shapes div:nth-child(18) > span,
+.shapes div:nth-child(20) > span,
+
+.shapes div:nth-child(22) > span,
+.shapes div:nth-child(24) > span,
+.shapes div:nth-child(26) > span,
+.shapes div:nth-child(28) > span,
+.shapes div:nth-child(30) > span,
+.shapes div:nth-child(31) > span,
+.shapes div:nth-child(33) > span,
+.shapes div:nth-child(35) > span,
+.shapes div:nth-child(36) > span,
+.shapes div:nth-child(38) > span,
+.shapes div:nth-child(40) > span,
+.shapes div:nth-child(42) > span,
+
+.shapes div:nth-child(44) > span,
+.shapes div:nth-child(45) > span,
+.shapes div:nth-child(47) > span,
+.shapes div:nth-child(50) > span,
+.shapes div:nth-child(52) > span,
+.shapes div:nth-child(55) > span,
+.shapes div:nth-child(58) > span,
+.shapes div:nth-child(59) > span,
+.shapes div:nth-child(61) > span,
+
+.shapes div:nth-child(64) > span,
+.shapes div:nth-child(67) > span,
+.shapes div:nth-child(69) > span,
+.shapes div:nth-child(70) > span,
+.shapes div:nth-child(73) > span,
+.shapes div:nth-child(75) > span,
+.shapes div:nth-child(76) > span,
+.shapes div:nth-child(78) > span,
+.shapes div:nth-child(81) > span,
+.shapes div:nth-child(83) > span,
+.shapes div:nth-child(84) > span,
+
+.shapes div:nth-child(85) > span,
+.shapes div:nth-child(88) > span,
+.shapes div:nth-child(90) > span,
+.shapes div:nth-child(93) > span,
+.shapes div:nth-child(96) > span,
+.shapes div:nth-child(97) > span,
+.shapes div:nth-child(99) > span,
+.shapes div:nth-child(102) > span,
+.shapes div:nth-child(104) > span,
+
+.shapes div:nth-child(106) > span,
+.shapes div:nth-child(108) > span,
+.shapes div:nth-child(110) > span,
+.shapes div:nth-child(112) > span,
+.shapes div:nth-child(114) > span,
+.shapes div:nth-child(115) > span,
+.shapes div:nth-child(117) > span,
+.shapes div:nth-child(119) > span,
+.shapes div:nth-child(120) > span,
+.shapes div:nth-child(122) > span,
+.shapes div:nth-child(124) > span,
+.shapes div:nth-child(126) > span {
  	border-radius: 50%;
   width: 100%;
   left: 0;
@@ -111,7 +172,7 @@ $gray: #A5AEAE;
   margin-bottom: $spacer-lg;
 
   position: sticky;
-  top: $spacer-lg;
+  top: 30vh !important;
 }
 .icon div {
   position:  relative;
