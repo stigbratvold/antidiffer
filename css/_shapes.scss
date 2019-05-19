@@ -129,7 +129,8 @@ $gray: #A5AEAE;
     transition: background-color 2s;
   }
 }
-.zero .icon {
+
+@mixin iconZero {
   div:nth-child(1) span,
   div:nth-child(4) span,
   div:nth-child(7) span,
@@ -160,7 +161,7 @@ $gray: #A5AEAE;
   div:nth-child(6) span { transform:rotate(30deg) !important; }
 }
 
-.zeroone .icon {
+@mixin iconZeroOne {
   div > span {
     background-color: $color5;
   }
@@ -190,7 +191,7 @@ $gray: #A5AEAE;
   }
 }
 
-.onezero .icon {
+@mixin iconOneZero {
   div > span {
     background-color: $color5;
   }
@@ -222,4 +223,16 @@ $gray: #A5AEAE;
   div:nth-child(7) span { transform:rotate(330deg) !important; }
   div:nth-child(8) span { transform:rotate(345deg) !important; }
   div:nth-child(9) span { transform:rotate(30deg) !important; }
+}
+
+.zero .icon {
+  @include iconZero;
+}
+
+.zeroone .icon {
+  @include iconZeroOne;
+}
+
+.onezero .icon {
+  @include iconOneZero;
 }
