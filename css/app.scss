@@ -7,7 +7,7 @@
 @import "shapes";
 
 body {
-  transition: background-color 1s;
+  transition: background-color .5s ease;
 }
 
 a {
@@ -90,9 +90,12 @@ section {
 footer {
   padding-top: $spacer-xl*2;
   padding-bottom: $spacer-xl;
-  color: #fff;
+  color: $text-color;
   font-size: 18px;
   margin-top: $spacer-xxl;
+
+  transition: all .5s ease;
+
   @include mq($tablet) {
     font-size: 14px;
 	}
@@ -113,8 +116,8 @@ footer {
   }
 
   a {
-    color: #fff;
-    border-color: #fff;
+    color: $text-color;
+    border-color: $text-color;
   }
   h3 {
     font-size: 32px;
@@ -127,7 +130,22 @@ footer {
     margin-right: $spacer-lg;
   }
   .logotype {
-    fill: #fff;
+    fill: $text-color;
+  }
+}
+
+body.has-background {
+  #teknologi svg { opacity: 0; }
+
+  footer {
+    color: #fff;
+    a {
+      color: #fff;
+      border-color: #fff;
+    }
+    .logotype {
+      fill: #fff;
+    }
   }
 }
 
@@ -221,6 +239,10 @@ footer {
     position: sticky;
     top: 30vh !important;
     width: 164px;
-    margin-bottom: 48px;
+    margin-top: -10vh;
+    
+    @include mq(768px) {
+      margin-bottom: $spacer-lg;
+    }
   }
 }
