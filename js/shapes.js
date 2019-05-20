@@ -170,7 +170,12 @@ function updateStage() {
   if (midpoint > state.stage3top) {
     stage = 3;
   }
-  document.body.className = "stage" + stage.toString();
+  document.body.classList.remove('stage0');
+  document.body.classList.remove('stage1');
+  document.body.classList.remove('stage2');
+  document.body.classList.remove('stage3');
+  document.body.classList.add('stage' + stage.toString());
+  // document.body.className = "stage" + stage.toString();
 }
 
 function updateRotations() {
