@@ -2027,6 +2027,10 @@ header {
   opacity: 0;
 }
 
+.text-center {
+  text-align: center;
+}
+
 section {
   padding-top: 120px;
   padding-bottom: 120px;
