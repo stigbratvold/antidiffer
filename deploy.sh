@@ -6,5 +6,6 @@ rsync -avz -e ssh \
     favicon.ico \
     img \
     index.html \
+    AntiDiffer_Shape*.json \
     js \
     nme@wh1.stepone.no:/home/nme/stepone.dev/root_antidiffer/
