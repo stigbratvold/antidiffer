@@ -305,3 +305,20 @@ $gray: #A5AEAE;
 .stage3 .zero .icon {
   @include iconOneZero;
 }
+
+.shapes.is-mobile div > span {
+  animation: spin infinite 20s linear;
+}
+
+.shapes.is-mobile div:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
