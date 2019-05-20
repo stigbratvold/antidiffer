@@ -97,17 +97,22 @@ function initializeShapes() {
   // Switch color set every 10 seconds
   setInterval(selectNextStyleSet, config.styleSetSwitchInterval * 1000);
 
+  // For testing touch functionality on desktop:
+  // state.isTouch = true;
+
   // Add listener for device orientation
   if (state.isTouch) {
+    state.container.className = "shapes is-mobile";
     window.addEventListener(
       "deviceorientation",
       throttle(updateDeviceOrientation),
       true
     );
+  } else {
+    // Add listener for mouse position
+    window.addEventListener("mousemove", throttle(updateMousePosition));
   }
 
-  // Add listener for mouse position
-  window.addEventListener("mousemove", throttle(updateMousePosition));
   window.addEventListener("scroll", throttle(updateScroll));
   window.addEventListener("resize", throttle(updateWindowBounds));
   // And run it once during startup:
