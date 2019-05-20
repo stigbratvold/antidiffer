@@ -217,4 +217,10 @@ footer {
   .row + .row {
     margin-top: 220px;
   }
+  .whatwedo_icon > div {
+    position: sticky;
+    top: 30vh !important;
+    width: 164px;
+    margin-bottom: 48px;
+  }
 }
