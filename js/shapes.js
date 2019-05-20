@@ -160,21 +160,35 @@ function updateScroll() {
 
 function updateStage() {
   var midpoint = state.lastScrollY + window.innerHeight / 2;
-  let stage = 0;
-  if (midpoint > state.stage1top) {
-    stage = 1;
+
+  document.body.classList.remove("stage0");
+  document.body.classList.remove("stage1");
+  document.body.classList.remove("stage2");
+  document.body.classList.remove("stage3");
+
+  if (midpoint > state.stage1top && midpoint < state.stage1bottom) {
+    document.body.classList.add("stage1");
   }
-  if (midpoint > state.stage2top) {
-    stage = 2;
+
+  if (midpoint > state.stage2top && midpoint < state.stage2bottom) {
+    document.body.classList.add("stage2");
   }
-  if (midpoint > state.stage3top) {
-    stage = 3;
+
+  if (midpoint > state.stage3top && midpoint < state.stage3bottom) {
+    document.body.classList.add("stage3");
   }
-  document.body.classList.remove('stage0');
-  document.body.classList.remove('stage1');
-  document.body.classList.remove('stage2');
-  document.body.classList.remove('stage3');
-  document.body.classList.add('stage' + stage.toString());
+
+  // let stage = 0;
+  // if (midpoint > state.stage1top) {
+  //   stage = 1;
+  // }
+  // if (midpoint > state.stage2top) {
+  //   stage = 2;
+  // }
+  // if (midpoint > state.stage3top) {
+  //   stage = 3;
+  // }
+  // document.body.classList.add('stage' + stage.toString());
   // document.body.className = "stage" + stage.toString();
 }
 
