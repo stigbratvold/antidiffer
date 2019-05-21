@@ -2276,7 +2276,6 @@ footer .logotype {
   position: sticky;
   top: 30vh !important;
   width: 164px;
-  margin-top: -10vh;
 }
 @media (max-width: 769px) {
   .whatwedo .whatwedo_icon > div {

@@ -270,7 +270,6 @@ footer {
     position: sticky;
     top: 30vh !important;
     width: 164px;
-    margin-top: -10vh;
     @include mq($tablet) {
       margin-top: 0;
   	}
