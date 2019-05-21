@@ -2067,7 +2067,7 @@ nav {
   text-transform: uppercase;
   font-family: "IBM Plex Mono", sans-serif;
 }
-@media (max-width: 769px) {
+@media (max-width: 260px) {
   nav {
     width: 100%;
   }
