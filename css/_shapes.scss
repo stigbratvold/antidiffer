@@ -324,19 +324,11 @@ $gray: #A5AEAE;
 }
 
 
-#innsikt {
-  opacity: 0;
-  transition: opacity 1.1s ease-in-out;
-}
-
-#teknologi {
-  opacity: 0;
-  transition: opacity 1.1s ease-in-out;
-}
-
+#innsikt,
+#teknologi,
 #design {
   opacity: 0;
-  transition: opacity 1.1s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
 }
 
 .stage1 {
